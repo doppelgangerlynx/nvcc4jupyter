@@ -27,6 +27,7 @@ class NVCCPlugin(Magics):
     def run(self, file_path, timeit=False):
         if timeit:
             stmt = f"subprocess.check_output(['{file_path}.out'], stderr=subprocess.STDOUT)"
+            print(stmt)
             output = self.shell.run_cell_magic(
                 magic_name="timeit", line="-q -o import subprocess", cell=stmt)
         else:
