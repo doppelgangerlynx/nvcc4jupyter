@@ -7,6 +7,7 @@ from IPython.core.magic import Magics, cell_magic, magics_class
 from common import helper
 
 compiler = '/usr/local/cuda/bin/nvcc'
+nvprof_excutable = '/usr/local/cuda/bin/nvprof'
 ext = '.cu'
 
 
