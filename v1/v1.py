@@ -55,3 +55,25 @@ class NVCCPlugin(Magics):
                 helper.print_out(e.output.decode("utf8"))
                 output = None
         return output
+    
+    """
+    New functionality: nvprof runner....
+    """
+    def nvprof(self, line, cell)
+        try:
+            args = self.argparser.parse_args(line.split())
+        except SystemExit as e:
+            self.argparser.print_help()
+            return
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            file_path = os.path.join(tmp_dir, str(uuid.uuid4()))
+            with open(file_path + ext, "w") as f:
+                f.write(cell)
+            try:
+                self.compile(file_path)
+                output = self.run(nvprof_excutable + " " + file_path, timeit=args.timeit)
+            except subprocess.CalledProcessError as e:
+                helper.print_out(e.output.decode("utf8"))
+                output = None
+        return output
