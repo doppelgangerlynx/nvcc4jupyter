@@ -37,6 +37,20 @@ class NVCCPlugin(Magics):
             
         helper.print_out(output)
         return None
+    
+    def nvprof_run(self, file_path, timeit=False):
+        if timeit:
+            stmt = f"subprocess.check_output(['{nvprof_excutable} {file_path}.out'], stderr=subprocess.STDOUT)"
+            print(stmt)
+            output = self.shell.run_cell_magic(
+                magic_name="timeit", line="-q -o import subprocess", cell=stmt)
+        else:
+            output = subprocess.check_output(
+                [file_path + ".out"], stderr=subprocess.STDOUT)
+            output = output.decode('utf8')
+            
+        helper.print_out(output)
+        return None
 
     @cell_magic
     def cu(self, line, cell):
@@ -75,7 +89,7 @@ class NVCCPlugin(Magics):
                 f.write(cell)
             try:
                 self.compile(file_path)
-                output = self.run(nvprof_excutable + " " + file_path, timeit=args.timeit)
+                output = self.nvprof_run(file_path, timeit=args.timeit)
             except subprocess.CalledProcessError as e:
                 helper.print_out(e.output.decode("utf8"))
                 output = None
