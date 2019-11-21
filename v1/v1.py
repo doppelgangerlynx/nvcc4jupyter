@@ -59,6 +59,7 @@ class NVCCPlugin(Magics):
     """
     New functionality: nvprof runner....
     """
+    @cell_magic
     def nvprof(self, line, cell)
         try:
             args = self.argparser.parse_args(line.split())
