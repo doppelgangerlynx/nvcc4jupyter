@@ -46,7 +46,7 @@ class NVCCPlugin(Magics):
                 magic_name="timeit", line="-q -o import subprocess", cell=stmt)
         else:
             output = subprocess.check_output(
-                [file_path + ".out"], stderr=subprocess.STDOUT)
+                [nvprof_excutable + " " + file_path + ".out"], stderr=subprocess.STDOUT)
             output = output.decode('utf8')
             
         helper.print_out(output)
