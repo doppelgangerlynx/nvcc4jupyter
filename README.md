@@ -24,10 +24,10 @@ V2 brings support of multiple source and header files.
 # This line just to bypass an exeption and can contain any text
 ```
 
-- **NEW**: nvprof is now callable with 
+###### **NEW**: nvprof is now callable with 
 ```
 %%nvprof
 # new cell magic made by doppelgangerlynx@github.com
 ```
-    - Note that since nvidia is considering to transition to NVIDIA Nsight tools, this functionality may become deprecated in the future; hence I place it in the V1. - doppelgangerlynx
+- Note that since nvidia is considering to transition to NVIDIA Nsight tools, this functionality may become deprecated in the future; hence I place it in the V1. - doppelgangerlynx
 
