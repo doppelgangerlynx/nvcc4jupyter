@@ -40,7 +40,7 @@ class NVCCPlugin(Magics):
     
     def nvprof_run(self, file_path, timeit=False):
         if timeit:
-            stmt = f"subprocess.check_output(['{nvprof_excutable} {file_path}.out'], stderr=subprocess.STDOUT)"
+            stmt = f"subprocess.check_output(['{nvprof_excutable}', '{file_path}.out'], stderr=subprocess.STDOUT)"
             print(stmt)
             output = self.shell.run_cell_magic(
                 magic_name="timeit", line="-q -o import subprocess", cell=stmt)
