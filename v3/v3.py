@@ -17,7 +17,7 @@ ext = '.cu'
 class NVCCPluginV3(Magics):
 
     def __init__(self, shell):
-        super(NVCCPlugin, self).__init__(shell)
+        super(NVCCPluginV3, self).__init__(shell)
 
         self.argparser = helper.get_argparser()
         # TODO: implement more...
