@@ -66,7 +66,7 @@ class NVCCPluginV3(Magics):
                 args_custom =[]
                 if args.custom:
                     args_custom = args.custom
-                output = self.nvprof_run(file_path, timeit=args.timeit, custom_commands = args_custom)
+                output = self.nsight_run(file_path, timeit=args.timeit, custom_commands = args_custom)
             except subprocess.CalledProcessError as e:
                 helper.print_out(e.output.decode("utf8"))
                 output = None
