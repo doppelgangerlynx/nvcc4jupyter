@@ -7,9 +7,10 @@ from IPython.core.magic import Magics, cell_magic, magics_class
 from IPython.core.magic_arguments import argument, magic_arguments, parse_argstring
 from common import helper
 
+cuda_ver = 10.1
 
 compiler = '/usr/local/cuda/bin/nvcc'
-nsight_excutable = '$NSIGHT_CLI_PARENT/nv-nsight-cu-cli'
+nsight_excutable = '/usr/local/cuda-{}/bin/nv-nsight-cu-cli'.format(cuda_ver)
 ext = '.cu'
 
 
