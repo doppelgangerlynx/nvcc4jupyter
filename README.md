@@ -1,5 +1,22 @@
 ## NVCC Plugin for Jupyter notebook
 
+
+### V3 + V1.revision codes by forker doppelgangerlynx
+
+Includes new support for adding compile arguments (such as -lcublas if you need cuBLAS) for magics ```%%cu``` and ```%%nv_nsight```
+##### usage of --compile_custom
+> ```%%cu --compile_custom```
+- if the cell is run, the cell output will ask for input for compile arguments you would like to add. for my case, I added:
+> ```-lcublas```
+- nv_nsight is now callable with 
+```
+%%nv_nsight
+# new cell magic made by doppelgangerlynx@github.com
+```
+- **IMPORTANT**
+    - to use nv_nsight, you need to go to v3/v3.py and configure:
+> ```cuda_ver = 10.1```
+    - But google colab uses CUDA 10.1 anyways, and I made this to run it on there, so if that's our case, no need to do so.
 ### V2 is available
 
 V2 brings support of multiple source and header files.
