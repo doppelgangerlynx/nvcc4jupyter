@@ -60,6 +60,8 @@ class NVCCPluginV3(Magics):
                 compile_args = []
                 if args.compile_custom:
                     compile_args = args.compile_custom
+                else:
+                    compile_args = input("Please provide custom compile arguments: ").split()
                 self.compile(file_path, compile_args)
                 args_custom =[]
                 if args.custom:
