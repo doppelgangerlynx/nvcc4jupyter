@@ -9,7 +9,7 @@ from common import helper
 
 
 compiler = '/usr/local/cuda/bin/nvcc'
-nsight_excutable = '/usr/local/cuda/bin/nv-nsight-cu-cli'
+nsight_excutable = '$NSIGHT_CLI_PARENT/nv-nsight-cu-cli'
 ext = '.cu'
 
 
