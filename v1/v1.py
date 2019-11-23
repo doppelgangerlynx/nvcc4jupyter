@@ -20,9 +20,11 @@ class NVCCPlugin(Magics):
         self.argparser = helper.get_argparser()
 
     @staticmethod
-    def compile(file_path):
+    def compile(file_path, compile_args=[]):
         subprocess.check_output(
-            [compiler, file_path + ext, "-o", file_path + ".out", '-Wno-deprecated-gpu-targets'], stderr=subprocess.STDOUT)
+            [compiler] + compile_args + [file_path + ext, "-o", file_path + ".out", '-Wno-deprecated-gpu-targets'],
+            stderr=subprocess.STDOUT
+                )
 
     def run(self, file_path, timeit=False):
         if timeit:
@@ -65,7 +67,10 @@ class NVCCPlugin(Magics):
             with open(file_path + ext, "w") as f:
                 f.write(cell)
             try:
-                self.compile(file_path)
+                compile_args = []
+                if args.compile_custom:
+                    compile_args = input("Please provide custom compile arguments: ").split()
+                self.compile(file_path, compile_args)
                 output = self.run(file_path, timeit=args.timeit)
             except subprocess.CalledProcessError as e:
                 helper.print_out(e.output.decode("utf8"))
